@@ -15,8 +15,9 @@ export const deleteTodo=(id)=>{
     }
 }
 
-export const editTodo=()=>{
+export const editTodo=(id)=>{
     return{
-        type: "EDIT_TODO"
+        type: "UPDATE_TODO",
+        payload: id,
     }
 }

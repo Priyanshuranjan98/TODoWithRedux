@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { useSelector,useDispatch } from 'react-redux';
-import {addTodo,deleteTodo,removeTodo} from '../action/index';
+import {addTodo,deleteTodo,editTodo} from '../action/index';
 import '../App.css'
 
 const Todo=()=> {
@@ -13,11 +13,16 @@ const Todo=()=> {
         dispatch(addTodo(inputData));
         setInputData('');
     }
+
+    const handleEdit = (data) => {
+        setInputData(data.data)
+        dispatch(deleteTodo(data.id))
+    }
   return (
     <>
     <div>
     <h1>TO DO APP!!!</h1>
-    <br/>
+    <hr/>
     </div>
     <div>
         <input value={inputData} onChange={(event)=>{
@@ -31,7 +36,9 @@ const Todo=()=> {
         <ul>{data.data}</ul>
         <span>
         <button onClick={()=>dispatch(deleteTodo(data.id))}>-</button>
-         
+        </span>
+        <span>
+        <button onClick={() => handleEdit(data)}>✂</button>
         </span>
     </div>
        )

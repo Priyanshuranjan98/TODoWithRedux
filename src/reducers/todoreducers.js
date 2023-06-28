@@ -27,6 +27,9 @@ const todoReducers=(state=initialData,action)=>{
                     return data.id !== deleteId
                })
                 } 
+                case 'UPDATE_TODO':
+                    console.log('pr',state.list)
+                    return state;
 
                 default: return state
     }
